@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 리플 관련 SQL -->
+<mapper namespace="global.sesoc.ajax.dao.CommentMapper">
+	
+	<!-- 리플 입력하기 -->
+	<insert id="insert" parameterType="CVO">
+		insert into usercomment values (usercomment_seq.nextval, #{name}, #{text})
+	</insert>
+
+	<!-- 리플 출력하기 -->
+	<select id="list" resultType="CVO">
+		select 
+			num
+			, name
+			, text
+		from 
+		 	usercomment 
+		order by num desc
+	</select>
+	
+	<!-- 리플 삭제하기 -->
+	<delete id="delete" parameterType="int">
+		delete 
+			from 
+				usercomment
+			where
+				num = #{num}
+	</delete>
+	
+	<!-- 리플 수정하기 -->
+	<update id="edit" parameterType="CVO">
+		update usercomment set text = #{text} where num = #{num}
+	</update>
+</mapper>
+  

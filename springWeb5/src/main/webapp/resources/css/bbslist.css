@@ -1,0 +1,18 @@
+ table {	
+ 	font-family : verdana;
+ 	font-size : 20px;
+ 	border: thin;
+ 	background-color: LightGray;
+ 	border-width: thin;
+ 	border-color: gray;
+ 	border:2px solid Violet;
+ }
+ th	{
+ 	background-color : gray;
+ 	text-align : center;
+ 	color : white;
+ }
+ form {
+ 	background-color: red;
+ 	text-align: center;
+ }

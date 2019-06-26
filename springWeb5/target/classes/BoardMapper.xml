@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<mapper namespace="global.sesoc.web5.dao.BoardMapper">	
+
+	<!-- 전체 글 목록 -->
+	<select id="list" resultType="Board">
+		select * from bbs order by boardnum desc
+	</select>
+	
+	<!-- 글쓰기 -->
+	<insert id="write" parameterType="Board">
+		insert into bbs(boardnum,name,password,content,inputdate) values(bbsseq.nextval,#{name},#{password},#{content},sysdate)
+	</insert>
+	
+	<!-- 글삭제하기 -->
+	<delete id="delete" parameterType="Board">
+		delete from bbs where BOARDNUM=#{boardnum} and password=#{password}
+	</delete>
+	
+	<!-- 글삭제하기2 -->
+	<delete id="del" parameterType="Board">
+		delete from bbs where BOARDNUM=#{boardnum} and password like #{password}
+	</delete>
+	
+	<!-- 글삭제하기3 -->
+	<delete id="del2" parameterType="HashMap">
+		delete from bbs where BOARDNUM=#{boardnum} and password like #{password}
+	</delete>
+</mapper>

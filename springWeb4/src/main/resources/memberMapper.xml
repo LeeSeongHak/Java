@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<mapper namespace="global.sesoc.web4.dao.MemberMapper">
+
+	<!-- 회원 정보 저장 -->
+	<insert id="insert" parameterType="Member">
+		insert into web4_member (id, password, name) values (#{id}, #{password}, #{name}) 
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="Member" resultType="Member">
+		select * from web4_member where id = #{id} and password = #{password}
+	</select>
+	
+	<!-- 전체 회원 목록 -->
+	<select id="select" resultType="Member">
+		select * from web4_member order by id
+	</select>
+	
+	<!-- 1명의 회원 정보 -->
+	<select id="selectOne" parameterType="string" resultType="Member">
+		select * from web4_member where id = #{id}
+	</select>
+	
+	<delete id="delete" parameterType="string">
+		delete from web4_member where id = #{id}
+	</delete>
+	
+</mapper>
